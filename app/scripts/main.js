@@ -3,7 +3,7 @@ console.log('Hi, I\'m Pat. I would like to make a web app that allows you to pla
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
-tag.src = "https://www.youtube.com/iframe_api";
+tag.src = 'https://www.youtube.com/iframe_api';
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -27,13 +27,24 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
+$('#playButton').on('click', function(event){
+  onPlayerReady;
+  console.log('yo');
+});
+
+$('.btn btn-lg').hover(function(){
+    $('p').css('background-color', 'yellow');
+    }, function(){
+    $('p').css('background-color', 'pink');
+});
+
 // 5. The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
 //    the player should play for six seconds and then stop.
 var done = false;
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 6000);
+    // setTimeout(stopVideo, 6000);
     done = true;
   }
 }
